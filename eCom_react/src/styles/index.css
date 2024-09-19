@@ -22,3 +22,6 @@ body {
 .custom-size-card {
   height: 200px;
 }
+.custom-max-width-forms{
+  max-width: 1000px;
+}
