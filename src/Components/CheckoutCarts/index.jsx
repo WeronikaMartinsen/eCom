@@ -43,7 +43,7 @@ const CheckoutCarts = (props) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-5 justify-center gap-2 items-center border bg-white rounded-xl mt-2 w-full">
+      <div className="grid grid-cols-5 justify-stretch items-center border bg-white rounded-xl mt-2 w-full">
         <div>
           <Link
             to={`/Product/${productId}`}
@@ -52,12 +52,12 @@ const CheckoutCarts = (props) => {
             <img
               src={detail?.image?.url}
               alt={detail?.image?.alt || "Product image"}
-              className="w-full h-36 object-cover rounded-xl rounded-r-none"
+              className="w-auto h-auto object-cover rounded-xl rounded-r-none"
             />
           </Link>
         </div>
         <div className="flex justify-center items-center text-center">
-          <h3 className="text-md">
+          <h3 className="text-md custom-hidden-element">
             {detail ? detail.title : "Loading title..."}
           </h3>
         </div>

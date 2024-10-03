@@ -5,6 +5,7 @@ import Contact from "./Pages/Contact";
 import Checkout from "./Pages/Checkout";
 import NoPage from "./Pages/NoPage";
 import CheckoutSuccess from "./Pages/CheckoutSuccess";
+import ContactSuccess from "./Pages/ContactSuccess";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Checkout" element={<Checkout />} />
           <Route path="/CheckoutSuccess" element={<CheckoutSuccess />} />
           <Route path="*" element={<NoPage />} />
+          <Route path="/ContactSuccess" element={<ContactSuccess />} />
         </Routes>
       </BrowserRouter>
     </div>
