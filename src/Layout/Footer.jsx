@@ -1,4 +1,5 @@
 import "../styles/index.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -8,18 +9,18 @@ function Footer() {
           <div className="container">
             <div>
               <p className="flex items-center justify-center mb-4 mt-4">
-                <span className="me-4">Register for free</span>
-                <button
-                  type="button"
-                  className="inline-block rounded-full border-2 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out hover:border-neutral-300 hover:text-neutral-200 focus:border-neutral-300 focus:text-neutral-200 focus:outline-none focus:ring-0 active:border-neutral-300 active:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600"
-                  data-twe-ripple-init
-                  data-twe-ripple-color="light"
-                >
-                  Sign up!
-                </button>
+                <span className="me-4">Contact us</span>
+                <Link to="/Contact">
+                  <button
+                    type="button"
+                    className="rounded-xl border border-white p-1 pr-2 pl-2"
+                  >
+                    Send message
+                  </button>
+                </Link>
               </p>
             </div>
-            <div className="w-full p-4 text-center text-xs border-t-2">
+            <div className="w-full p-4 text-center text-xs border-t border-white">
               © 2023 Copyright: Weronika Martinsen
             </div>
           </div>
