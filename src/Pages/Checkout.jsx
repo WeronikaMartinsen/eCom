@@ -29,23 +29,28 @@ const Checkout = () => {
               <CheckoutCarts key={key} data={item} />
             ))}
 
-            <div className="flex justify-end gap-2 mt-4">
+            <div className="flex justify-end gap-2 mt-4 mr-2">
               <span>Total price:</span>
               <span className="font-semibold">${totalPrice.toFixed(2)}</span>
             </div>
           </div>
 
           {/* Buttons for clearing cart and proceeding to checkout */}
-          <div className="flex justify-between mb-8 mt-8">
+          <div className="flex justify-around mb-8 mt-8">
             <button
               onClick={handleClearCart}
               className="p-3 border text-md gap-2 flex justify-center border-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
             >
               Clear Cart
             </button>
-            <button className="p-3 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700">
-              Checkout
-            </button>
+            <Link to={`/CheckoutSuccess`}>
+              <button
+                onClick={handleClearCart}
+                className="p-3 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
+              >
+                Checkout
+              </button>
+            </Link>
           </div>
         </div>
       ) : (

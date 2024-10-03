@@ -43,7 +43,7 @@ const CheckoutCarts = (props) => {
 
   return (
     <>
-      <div className="grid grid-cols-5 justify-stretch items-center border bg-white rounded-xl mt-2 w-full">
+      <div className="grid grid-cols-5 custom-grid-col justify-stretch items-center border bg-white rounded-xl mt-2 w-full">
         <div>
           <Link
             to={`/Product/${productId}`}
@@ -52,25 +52,29 @@ const CheckoutCarts = (props) => {
             <img
               src={detail?.image?.url}
               alt={detail?.image?.alt || "Product image"}
-              className="w-auto h-auto object-cover rounded-xl rounded-r-none"
+              className="w-40 h-40 object-cover rounded-xl rounded-r-none"
             />
           </Link>
         </div>
-        <div className="flex justify-center items-center text-center">
-          <h3 className="text-md custom-hidden-element">
+        <div className="flex justify-start pl-1 items-center text-center custom-d-none">
+          <h3 className="text-md font-semibold text-start">
             {detail ? detail.title : "Loading title..."}
           </h3>
         </div>
 
         <div className="flex justify-center items-center text-center">
-          <p>
-            {detail
-              ? (detail.discountedPrice * quantity).toFixed(2)
-              : "Loading price..."}
-          </p>
+          {detail ? (
+            detail.discountedPrice ? (
+              <p>${(detail.discountedPrice * quantity).toFixed(2)}</p>
+            ) : (
+              <p>${(detail.price * quantity).toFixed(2)}</p>
+            )
+          ) : (
+            <p>Loading price...</p>
+          )}
         </div>
 
-        <div className="ml-8 mr-8 flex justify-between gap-2">
+        <div className="ml-8 mr-8 custom-media-query flex justify-between gap-2">
           <button
             className="rounded-full w-6 h-6 text-cyan-600"
             onClick={handleMinusQuantity}
@@ -89,7 +93,7 @@ const CheckoutCarts = (props) => {
         <div className="flex justify-center items-center text-center">
           <TrashIcon
             onClick={removeItem}
-            className="h-6 w-6 text-gray-500 cursor-pointer hover:shadow-md rounded-lg"
+            className="h-6 w-6  text-gray-500 cursor-pointer hover:shadow-md rounded-lg"
           />
         </div>
       </div>
