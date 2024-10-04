@@ -22,7 +22,7 @@ const Checkout = () => {
         <div className="custom-max-width h-full flex flex-col gap-20 pl-1 pr-1">
           <BackToHomeLink />
           <div>
-          <h1 className="mb-6 text-3xl text-center">Shopping cart</h1>
+          <h1 className="mb-10 text-3xl text-center">Shopping cart</h1>
 
             {/* Display cart items */}
             {carts.map((item, key) => (

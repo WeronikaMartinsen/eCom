@@ -93,7 +93,7 @@ const Header = () => {
           <div className="lg:flex relative">
             <Link
               className={
-                "link-styles p-1 hover:bg-red-200 active:bg-red-200 focus:outline-none focus:ring focus:ring-red-200 rounded-lg"
+                "link-styles p-1 rounded-lg"
               }
               to="/Checkout"
             >
