@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ModalDialog({ open, handleOpen }) {
   return (
@@ -19,13 +20,13 @@ function ModalDialog({ open, handleOpen }) {
                   id="hs-scale-animation-modal-label"
                   className="font-bold text-gray-800 dark:text-white"
                 >
-                  Product Added to Cart!
+                  Well done!
                 </h3>
                 <button
                   type="button"
                   className="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600"
                   aria-label="Close"
-                  onClick={handleOpen} // Close modal on click
+                  onClick={handleOpen}
                 >
                   <span className="sr-only">Close</span>
                   <svg
@@ -55,13 +56,15 @@ function ModalDialog({ open, handleOpen }) {
 
               {/* Modal Footer */}
               <div className="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
+                <Link to="/">
                 <button
                   type="button"
                   onClick={handleOpen} // Close modal on button click
                   className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                 >
-                  Close
+                  Continue shopping
                 </button>
+                </Link>
               </div>
             </div>
           </div>

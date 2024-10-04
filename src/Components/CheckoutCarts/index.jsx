@@ -11,7 +11,9 @@ const CheckoutCarts = (props) => {
   useEffect(() => {
     const products = JSON.parse(localStorage.getItem("carts") || "[]");
     if (!Array.isArray(products) || products.length === 0) {
+   
       console.error("No products found in localStorage");
+      console.log("products", products)
       return;
     }
     const findDetail = products.find(product => product.productId === productId);
@@ -46,8 +48,7 @@ const CheckoutCarts = (props) => {
     );
   };
 
-  console.log(detail);
-
+console.log(detail)
   return (
     <>
       <div className="grid grid-cols-5 custom-grid-col justify-stretch items-center border bg-white rounded-xl mt-2 w-full">
@@ -57,10 +58,10 @@ const CheckoutCarts = (props) => {
             className="flex items-center gap-2"
           >
             <img
-               src={detail ?.image.url}
-               alt={detail ?.image.alt} 
-              className="w-40 h-40 object-cover rounded-xl rounded-r-none"
-            />
+            src={detail && detail.image ? detail.image.src : ""}
+            alt={detail && detail.image ? detail.image.alt : "Loading image..."}
+            className="w-40 h-40 object-cover rounded-xl rounded-r-none"
+          />
           </Link>
         </div>
         <div className="flex justify-start pl-1 items-center text-center custom-d-none">

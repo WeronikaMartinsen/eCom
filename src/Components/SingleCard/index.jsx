@@ -23,11 +23,10 @@ function SingleCard({ product }) {
         quantity: quantity,
         price: product.discountedPrice || product.price,
         title: product.title, 
-        image: {
-          src: product.image.url,
-          alt: product.image.alt
-       
-        }    
+        image: {  
+          src: product.image.url, 
+          alt: product.image.alt,  
+        }
       })
 
     );

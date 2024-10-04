@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+
+
+
 const schema = yup
   .object({
     fullName: yup
@@ -38,6 +41,7 @@ function ContactForm() {
   }
   return (
     <div className="w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+    
       <h1 className="mt-12 mb-6 text-3xl text-center">Contact us!</h1>
       <form
         className="flex flex-wrap justify-center items-center m-1 mb-6 w-50"
