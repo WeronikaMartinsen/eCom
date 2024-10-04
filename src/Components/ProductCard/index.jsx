@@ -7,7 +7,7 @@ import ModalDialog from "../ModalDialog";
 
 function ProductCard({ product }) {
   const carts = useSelector((store) => store.cart.items);
-  console.log(carts);
+  // console.log(carts);
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const handleAddToCart = () => {
@@ -79,7 +79,7 @@ function ProductCard({ product }) {
       </div>
 
       {/* Modal Dialog */}
-      <ModalDialog open={open} handleOpen={handleOpen} />
+      <ModalDialog open={open} handleOpen={handleOpen} carts={carts} />
     </div>
   );
 }

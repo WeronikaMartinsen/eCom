@@ -6,7 +6,6 @@ import SingleCard from "../../Components/SingleCard";
 
 export default function SingleProductCall() {
   const { id } = useParams();
-  console.log("Fetch id form url:", id);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -26,7 +25,6 @@ export default function SingleProductCall() {
         }
         const json = await response.json();
         setProduct(json.data);
-        console.log(json);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);

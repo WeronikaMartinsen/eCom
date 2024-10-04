@@ -42,7 +42,6 @@ function SingleCard({ product }) {
         />
       </div>
 
-      {/* Content */}
       <div className="flex-grow p-5 relative">
         <h5 className="mb-4 text-3xl font-bold">{product.title}</h5>
 
@@ -53,12 +52,10 @@ function SingleCard({ product }) {
         <div className="mt-4 text-end">
           {product.discountedPrice < product.price ? (
             <>
-              {/* Display original price with a line-through */}
               <p className="mb-1 mt-2 line-through dark:text-gray-400 text-xs text-gray-400">
                 {product.price},-
               </p>
 
-              {/* Display discounted price */}
               <p className="mb-1 font-normal text-gray-700 dark:text-gray-400 text-xl">
                 {product.discountedPrice},-
               </p>
@@ -76,13 +73,12 @@ function SingleCard({ product }) {
               </div>
             </>
           ) : (
-            // Display only the original price if there’s no discount
             <p className="mb-1 font-normal text-gray-700 dark:text-gray-400 text-xl">
               {product.price},-
             </p>
           )}
         </div>
-        {/* Reviews Section */}
+
         <div className="h-auto">
           {product.reviews &&
           Array.isArray(product.reviews) &&
@@ -94,7 +90,6 @@ function SingleCard({ product }) {
               >
                 <p className="text-gray-600 italic">{review.description}</p>
                 <div className="flex justify-between mt-2">
-                  {/* Display Star Rating */}
                   <div className="flex">
                     {[...Array(5)].map((star, index) => {
                       const ratingValue = index + 1;

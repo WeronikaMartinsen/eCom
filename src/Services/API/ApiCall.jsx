@@ -39,7 +39,7 @@ export default function ApiCall({ searchInput }) {
   console.log(filteredData);
 
   return (
-    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-4 custom-max-width">
+    <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-4 custom-max-width">
       {loading && <Loading />}
       {error && <ErrorMessage />}
       {!loading && !error && (
