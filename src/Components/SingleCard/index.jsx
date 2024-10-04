@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Stores/Cart";
-import { StarIcon as StarSolid } from "@heroicons/react/24/solid"; // Solid star icon for filled
-import { StarIcon as StarOutline } from "@heroicons/react/24/outline"; // Outline star icon for empty
+import { StarIcon as StarSolid } from "@heroicons/react/24/solid";
+import { StarIcon as StarOutline } from "@heroicons/react/24/outline"; 
+import ModalDialog from "../ModalDialog";
+import React from "react";
 
 function SingleCard({ product }) {
+  const [open, setOpen] = React.useState(false);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const handleMinusQuantity = () => {
@@ -19,9 +22,13 @@ function SingleCard({ product }) {
         productId: product.id,
         quantity: quantity,
         price: product.discountedPrice || product.price,
+       
       })
+
     );
+    setOpen(true);
   };
+  const handleOpen = () => setOpen(!open); 
   return (
     <div className="mb-2 grid grid-cols-1 sm:grid-cols-2 gap-5 p-4 custom-max-width">
       <div className="h-96">
@@ -136,6 +143,8 @@ function SingleCard({ product }) {
             Add To Cart
           </button>
         </div>
+              {/* Modal Dialog */}
+      <ModalDialog open={open} handleOpen={handleOpen} />
       </div>
     </div>
   );

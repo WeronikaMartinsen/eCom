@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../Stores/Cart";
+import React from "react";
+import ModalDialog from "../ModalDialog";
 
 function ProductCard({ product }) {
   const carts = useSelector((store) => store.cart.items);
   console.log(carts);
   const dispatch = useDispatch();
+  const [open, setOpen] = React.useState(false);
   const handleAddToCart = () => {
     dispatch(
       addToCart({
@@ -15,7 +18,12 @@ function ProductCard({ product }) {
         price: product.discountedPrice || product.price,
       })
     );
+    setOpen(true);
   };
+
+  const handleOpen = () => setOpen(!open); 
+
+ 
   return (
     <div className="relative bg-white rounded-lg shadow-md flex flex-col h-full justify-between hover:shadow-xl cursor-pointer">
       <Link to={`/Product/${product.id}`}>
@@ -69,6 +77,9 @@ function ProductCard({ product }) {
           <ShoppingCartIcon className="h-4 w-4 mt-1 ml-2" />
         </button>
       </div>
+       
+      {/* Modal Dialog */}
+      <ModalDialog open={open} handleOpen={handleOpen} />
     </div>
   );
 }
