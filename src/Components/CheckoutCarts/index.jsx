@@ -9,11 +9,18 @@ const CheckoutCarts = (props) => {
   const [detail, setDetail] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
-    const products = JSON.parse(localStorage.getItem("products") || "[]");
-    const findDetail = products.filter(
-      (product) => product.id === productId
-    )[0];
-    setDetail(findDetail);
+    const products = JSON.parse(localStorage.getItem("carts") || "[]");
+    if (!Array.isArray(products) || products.length === 0) {
+      console.error("No products found in localStorage");
+      return;
+    }
+    const findDetail = products.find(product => product.productId === productId);
+
+    if (findDetail) {
+      setDetail(findDetail);
+    } else {
+      console.error(`Product with ID ${productId} not found`);
+    }
   }, [productId]);
   const handleMinusQuantity = () => {
     dispatch(
@@ -50,8 +57,8 @@ const CheckoutCarts = (props) => {
             className="flex items-center gap-2"
           >
             <img
-              src={detail?.image?.url}
-              alt={detail?.image?.alt || "Product image"}
+               src={detail ?.image.url}
+               alt={detail ?.image.alt} 
               className="w-40 h-40 object-cover rounded-xl rounded-r-none"
             />
           </Link>

@@ -13,18 +13,23 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const { productId, quantity, price } = action.payload;
+      const { productId, quantity, price, title, image } = action.payload;
       const indexProductId = state.items.findIndex(
         (item) => item.productId === productId
       );
       const itemPrice = price !== undefined ? price : 0;
+      
       if (indexProductId >= 0) {
-        state.items[indexProductId].quantity += quantity;
+        state.items[indexProductId].quantity += quantity; // Update quantity if item exists
       } else {
-        state.items.push({ productId, quantity, price: itemPrice });
+        // Push a new object with title and image included
+        state.items.push({ productId, quantity, price: itemPrice, title, image });
       }
+      
+      // Save the updated items in local storage
       localStorage.setItem("carts", JSON.stringify(state.items));
     },
+    
     changeQuantity(state, action) {
       const { productId, quantity } = action.payload;
       const indexProductId = state.items.findIndex(

@@ -16,6 +16,11 @@ function ProductCard({ product }) {
         productId: product.id,
         quantity: 1,
         price: product.discountedPrice || product.price,
+        title: product.title,  
+        image: {  
+          src: product.image.url, 
+          alt: product.image.alt,  
+        }
       })
     );
     setOpen(true);

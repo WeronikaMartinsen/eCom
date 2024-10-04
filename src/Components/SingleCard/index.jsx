@@ -22,7 +22,12 @@ function SingleCard({ product }) {
         productId: product.id,
         quantity: quantity,
         price: product.discountedPrice || product.price,
+        title: product.title, 
+        image: {
+          src: product.image.url,
+          alt: product.image.alt
        
+        }    
       })
 
     );
@@ -30,7 +35,7 @@ function SingleCard({ product }) {
   };
   const handleOpen = () => setOpen(!open); 
   return (
-    <div className="mb-2 grid grid-cols-1 sm:grid-cols-2 gap-5 p-4 custom-max-width">
+    <div className="mb-2 mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5 p-4 custom-max-width">
       <div className="h-96">
         <img
           className="rounded-lg h-full w-full object-cover"
@@ -41,7 +46,7 @@ function SingleCard({ product }) {
 
       {/* Content */}
       <div className="flex-grow p-5 relative">
-        <h5 className="mb-4 mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
           {product.title}
         </h5>
 

@@ -42,12 +42,16 @@ export default function ApiCall({ searchInput }) {
     <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-4 custom-max-width">
       {loading && <Loading />}
       {error && <ErrorMessage />}
-      {Array.isArray(filteredData) && filteredData.length > 0 ? (
-        filteredData.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))
-      ) : (
-        <p>No products found.</p>
+      {!loading && !error && (
+        <>
+          {Array.isArray(filteredData) && filteredData.length > 0 ? (
+            filteredData.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <p>No products found.</p>
+          )}
+        </>
       )}
     </div>
   );
