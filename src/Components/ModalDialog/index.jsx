@@ -49,22 +49,33 @@ function ModalDialog({ open, handleOpen }) {
 
               {/* Modal Body */}
               <div className="p-4 overflow-y-auto">
-                <p className="mt-1 text-gray-800 dark:text-neutral-400">
+                <p className="mt-4 text-gray-800 dark:text-neutral-400 text-center">
                   You have successfully added the product to your cart!
                 </p>
               </div>
 
               {/* Modal Footer */}
-              <div className="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
-                <Link to="/">
+              <div className="flex justify-between items-center gap-x-2 py-3 px-4 mt-4 dark:border-neutral-700">
+             
+                <Link to="/Checkout">
                 <button
                   type="button"
                   onClick={handleOpen} // Close modal on button click
                   className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                 >
+                  Checkout
+                </button>
+                </Link>
+                <Link to="/">
+                <button
+                  type="button"
+                  onClick={handleOpen} // Close modal on button click
+                  className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-red-300 hover:bg-red-400  shadow-sm  focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                >
                   Continue shopping
                 </button>
                 </Link>
+             
               </div>
             </div>
           </div>
