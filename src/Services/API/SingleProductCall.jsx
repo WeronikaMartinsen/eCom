@@ -13,7 +13,6 @@ export default function SingleProductCall() {
 
   useEffect(() => {
     if (!id) {
-      // If id is still undefined, don't attempt to fetch data
       console.error("ID is undefined!");
       return;
     }

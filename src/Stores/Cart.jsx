@@ -20,13 +20,11 @@ const cartSlice = createSlice({
       const itemPrice = price !== undefined ? price : 0;
       
       if (indexProductId >= 0) {
-        state.items[indexProductId].quantity += quantity; // Update quantity if item exists
+        state.items[indexProductId].quantity += quantity; 
       } else {
-        // Push a new object with title and image included
+      
         state.items.push({ productId, quantity, price: itemPrice, title, image });
       }
-      
-      // Save the updated items in local storage
       localStorage.setItem("carts", JSON.stringify(state.items));
     },
     
@@ -70,19 +68,19 @@ export const {
 
 export default cartSlice.reducer;
 
-// Selector for items
+
 export const selectCartItems = createSelector(
   (state) => state.cart.items,
   (items) => items
 );
 
-// Memoized selector for total price
+
 export const selectTotalPrice = createSelector([selectCartItems], (items) => {
-  // Calculate the total price only when items change
+
   return items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 });
 
-// Additional memoized selectors if needed:
+
 export const selectCartItemCount = createSelector(
   [selectCartItems],
   (items) => {

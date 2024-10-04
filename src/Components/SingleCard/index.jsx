@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Stores/Cart";
 import { StarIcon as StarSolid } from "@heroicons/react/24/solid";
-import { StarIcon as StarOutline } from "@heroicons/react/24/outline"; 
+import { StarIcon as StarOutline } from "@heroicons/react/24/outline";
 import ModalDialog from "../ModalDialog";
 import React from "react";
 
@@ -22,17 +22,16 @@ function SingleCard({ product }) {
         productId: product.id,
         quantity: quantity,
         price: product.discountedPrice || product.price,
-        title: product.title, 
-        image: {  
-          src: product.image.url, 
-          alt: product.image.alt,  
-        }
+        title: product.title,
+        image: {
+          src: product.image.url,
+          alt: product.image.alt,
+        },
       })
-
     );
     setOpen(true);
   };
-  const handleOpen = () => setOpen(!open); 
+  const handleOpen = () => setOpen(!open);
   return (
     <div className="mb-2 mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5 p-4 custom-max-width">
       <div className="h-96">
@@ -45,9 +44,7 @@ function SingleCard({ product }) {
 
       {/* Content */}
       <div className="flex-grow p-5 relative">
-        <h5 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {product.title}
-        </h5>
+        <h5 className="mb-4 text-3xl font-bold">{product.title}</h5>
 
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
           {product.description}
@@ -66,14 +63,17 @@ function SingleCard({ product }) {
                 {product.discountedPrice},-
               </p>
 
-              {/* Calculate and display discount percentage */}
-              <p className="absolute top-1 right-2 text-md text-red-600 font-semibold p-2 bg-white rounded-full">
-                {Math.round(
-                  ((product.price - product.discountedPrice) / product.price) *
-                    100
-                )}
-                %
-              </p>
+              <div className="absolute -top-5 right-1 text-white pl-3 pr-3 pt-1 pb-1 bg-red-500 rounded-full">
+                <p className="font-bold text-md flex justify-end">
+                  {Math.round(
+                    ((product.price - product.discountedPrice) /
+                      product.price) *
+                      100
+                  )}
+                  %
+                </p>
+                <span className="text-xs mr-2">OFF</span>
+              </div>
             </>
           ) : (
             // Display only the original price if there’s no discount
@@ -109,8 +109,6 @@ function SingleCard({ product }) {
                       );
                     })}
                   </div>
-
-                  {/* Display username */}
                   <p className="text-sm">{review.username}</p>
                 </div>
               </div>
@@ -142,13 +140,12 @@ function SingleCard({ product }) {
         <div className="flex justify-center">
           <button
             onClick={handleAddToCard}
-            className="mt-8 p-2 pr-10 pl-10 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
+            className="mt-8 p-2 pr-10 pl-10 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
           >
             Add To Cart
           </button>
         </div>
-              {/* Modal Dialog */}
-      <ModalDialog open={open} handleOpen={handleOpen} />
+        <ModalDialog open={open} handleOpen={handleOpen} />
       </div>
     </div>
   );

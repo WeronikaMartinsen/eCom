@@ -16,19 +16,18 @@ function ProductCard({ product }) {
         productId: product.id,
         quantity: 1,
         price: product.discountedPrice || product.price,
-        title: product.title,  
-        image: {  
-          src: product.image.url, 
-          alt: product.image.alt,  
-        }
+        title: product.title,
+        image: {
+          src: product.image.url,
+          alt: product.image.alt,
+        },
       })
     );
     setOpen(true);
   };
 
-  const handleOpen = () => setOpen(!open); 
+  const handleOpen = () => setOpen(!open);
 
- 
   return (
     <div className="relative bg-white rounded-lg shadow-md flex flex-col h-full justify-between hover:shadow-xl cursor-pointer">
       <Link to={`/Product/${product.id}`}>
@@ -41,48 +40,44 @@ function ProductCard({ product }) {
         </div>
       </Link>
       {/* Content */}
-      <div className="flex-grow p-2">
-        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {product.title}
-        </h5>
+      <div className="flex-grow p-2 mr-2">
+        <h5 className="mb-2 ml-2 text-xl font-bold">{product.title}</h5>
         {product.discountedPrice < product.price ? (
           <>
-            {/* Display original price with a line-through */}
-            <p className="mb-1 line-through dark:text-gray-400 text-xs text-gray-400">
-              {product.price},-
+            <p className="mb-1 flex justify-end line-through dark:text-gray-500 text-xs text-gray-400">
+              ${product.price},-
+            </p>
+            <p className="mb-1 flex justify-end text-gray-700 dark:text-gray-400 text-xl font-semibold">
+              ${product.discountedPrice},-
             </p>
 
-            {/* Display discounted price */}
-            <p className="mb-1 font-normal text-gray-700 dark:text-gray-400 text-xl">
-              {product.discountedPrice},-
-            </p>
-
-            {/* Calculate and display discount percentage */}
-            <p className="absolute top-1 right-1 text-md text-red-600 font-semibold p-2 bg-white rounded-full">
-              {Math.round(
-                ((product.price - product.discountedPrice) / product.price) *
-                  100
-              )}
-              %
-            </p>
+            <div className="absolute top-1 right-1 text-white pl-3 pr-3 pt-1 pb-1 bg-red-500 rounded-full">
+              <p className="font-bold text-md flex justify-end">
+                {Math.round(
+                  ((product.price - product.discountedPrice) / product.price) *
+                    100
+                )}
+                %
+              </p>
+              <span className="text-xs pl-1">OFF</span>
+            </div>
           </>
         ) : (
-          // Display only the original price if there’s no discount
-          <p className="mb-1 font-normal text-gray-700 dark:text-gray-400 text-xl">
-            {product.price},-
+          <p className="mb-1 font-normal flex justify-end text-xl">
+            ${product.price},-
           </p>
         )}
       </div>
       <div className="flex justify-center items-center mb-4">
         <button
-          className="p-1 border text-md text-center flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
+          className="p-1 border text-md text-center flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
           onClick={handleAddToCart}
         >
           Add to cart
           <ShoppingCartIcon className="h-4 w-4 mt-1 ml-2" />
         </button>
       </div>
-       
+
       {/* Modal Dialog */}
       <ModalDialog open={open} handleOpen={handleOpen} />
     </div>
