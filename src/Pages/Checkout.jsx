@@ -39,14 +39,14 @@ const Checkout = () => {
           <div className="flex justify-around mb-8 mt-8">
             <button
               onClick={handleClearCart}
-              className="p-3 border text-md gap-2 flex justify-center border-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
+              className="p-3 border text-md gap-2 flex justify-center border-red-300 rounded-xl hover:bg-red-400"
             >
               Clear Cart
             </button>
             <Link to={`/CheckoutSuccess`}>
               <button
                 onClick={handleClearCart}
-                className="p-3 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
+                className="p-3 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
               >
                 Checkout
               </button>
