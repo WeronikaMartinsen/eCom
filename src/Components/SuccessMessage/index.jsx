@@ -9,7 +9,7 @@ function SuccessMessage() {
           <p>You will hear from between 1-3 working day! </p>
         </div>
         <Link to={`/`}>
-          <button className="mt-8 p-2 pr-10 pl-10 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700">
+          <button className="mt-8 p-2 pr-10 pl-10 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400">
             Continue Shopping
           </button>
         </Link>

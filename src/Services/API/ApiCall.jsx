@@ -6,7 +6,7 @@ import ProductCard from "../../Components/ProductCard";
 export default function ApiCall({ searchInput }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -14,19 +14,22 @@ export default function ApiCall({ searchInput }) {
 
   const fetchData = async () => {
     try {
-      setError(false);
+      setError(null);
       setLoading(true);
       const response = await fetch("https://v2.api.noroff.dev/online-shop");
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Failed to fetch products. Please try again later.");
       }
       const result = await response.json();
+      if (!result.data || result.data.length === 0) {
+        throw new Error("No products available.");
+      }
       setData(result.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error.message);
       setLoading(false);
-      setError(true);
+      setError(error.message);
     }
   };
 
@@ -36,12 +39,11 @@ export default function ApiCall({ searchInput }) {
         product.title.toLowerCase().includes(searchInput.toLowerCase())
       )
     : data;
-  console.log(filteredData);
 
   return (
     <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-4 custom-max-width">
       {loading && <Loading />}
-      {error && <ErrorMessage />}
+      {error && <ErrorMessage message={error} />}
       {!loading && !error && (
         <>
           {Array.isArray(filteredData) && filteredData.length > 0 ? (

@@ -4,8 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-
-
 const schema = yup
   .object({
     fullName: yup
@@ -41,7 +39,6 @@ function ContactForm() {
   }
   return (
     <div className="w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
-    
       <h1 className="mt-12 mb-6 text-3xl text-center">Contact us!</h1>
       <form
         className="flex flex-wrap justify-center items-center m-1 mb-6 w-50"
@@ -112,7 +109,7 @@ function ContactForm() {
         <div className="w-full lg:w-3/5 flex flex-col justify-center items-center mb-12 mt-4">
           <button
             type="submit"
-            className="w-3/4 mt-8 p-2 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400 hover:shadow-xl dark:bg-gray-800 dark:border-gray-700"
+            className="w-3/4 mt-8 p-2 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
           >
             Submit
           </button>

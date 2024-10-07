@@ -91,12 +91,7 @@ const Header = () => {
           {/*Shopping bag*/}
 
           <div className="lg:flex relative">
-            <Link
-              className={
-                "link-styles p-1 rounded-lg"
-              }
-              to="/Checkout"
-            >
+            <Link className={"link-styles p-1 rounded-lg"} to="/Checkout">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -152,7 +147,11 @@ const Header = () => {
                 <div className="flow-root bg-rose-50">
                   <div className="divide-y divide-gray-500/10">
                     <div className="flex flex-col col justify-center gap-4 mt-8">
-                      <Link className={"link-styles-mobile"} to="/">
+                      <Link
+                        className={"link-styles-mobile"}
+                        onClick={toggleMenu}
+                        to="/"
+                      >
                         Home
                       </Link>
                       <Link className={"link-styles-mobile"} to="/Contact">

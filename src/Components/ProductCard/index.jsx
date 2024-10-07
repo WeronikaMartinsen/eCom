@@ -7,7 +7,6 @@ import ModalDialog from "../ModalDialog";
 
 function ProductCard({ product }) {
   const carts = useSelector((store) => store.cart.items);
-  // console.log(carts);
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const handleAddToCart = () => {

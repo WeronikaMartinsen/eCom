@@ -8,28 +8,33 @@ export default function SingleProductCall() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!id) {
-      console.error("ID is undefined!");
+      setError("Invalid product ID.");
       return;
     }
     async function getProduct(url) {
       try {
-        setError(false);
+        setError(null);
         setLoading(true);
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error(
+            "Failed to fetch the product. Please try again later."
+          );
         }
         const json = await response.json();
+        if (!json.data) {
+          throw new Error("Product not found.");
+        }
         setProduct(json.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setLoading(false);
-        setError(true);
+        setError(error.message);
       }
     }
 
@@ -37,7 +42,7 @@ export default function SingleProductCall() {
   }, [id]);
 
   if (loading) return <Loading />;
-  if (error) return <ErrorMessage />;
+  if (error) return <ErrorMessage message={error} />;
   if (!product) return null;
 
   return (
