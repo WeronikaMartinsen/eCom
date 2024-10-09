@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/index.css";
 import Logo from "../images/Logo.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -57,41 +57,45 @@ const Header = () => {
               </button>
             </div>
             <div className="flex lg:flex-1">
-              <Link
+              <NavLink
                 className={
-                  "link-styles p-1 hover:bg-red-200 active:bg-red-200 focus:outline-none focus:ring focus:ring-red-200 rounded-lg"
+                  "link-styles p-1 hover:bg-red-200 active:bg-red-200 focus:active:bg-red-200 rounded-lg"
                 }
                 to="/"
               >
                 <img src={Logo} alt="Logo" className="w-15 h-8" />
-              </Link>
+              </NavLink>
             </div>
 
             <div className="hidden sm:flex sm:gap-x-12 bg-rose-50">
               <div className="relative">{/* Dropdown menu */}</div>
-              <Link
-                className={
-                  "link-styles p-1 hover:bg-red-200 active:bg-red-200 focus:outline-none focus:ring focus:ring-red-200 rounded-lg"
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "link-styles p-1 bg-red-300 rounded-lg" // Active link styling
+                    : "link-styles p-1 hover:bg-red-200 rounded-lg"
                 }
                 to="/"
               >
                 Home
-              </Link>
-              <Link
-                className={
-                  "link-styles p-1 hover:bg-red-200 active:bg-red-200 focus:outline-none focus:ring focus:ring-red-200 rounded-lg m-0"
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "link-styles p-1 bg-red-300 rounded-lg" // Active link styling
+                    : "link-styles p-1 hover:bg-red-200 rounded-lg"
                 }
-                to="/Contact"
+                to="/contact"
               >
                 Contact
-              </Link>
+              </NavLink>
             </div>
           </div>
 
           {/*Shopping bag*/}
 
           <div className="lg:flex relative">
-            <Link className={"link-styles p-1 rounded-lg"} to="/Checkout">
+            <NavLink className={"link-styles p-1 rounded-lg"} to="/checkout">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -111,7 +115,7 @@ const Header = () => {
                   {totalQuantity}
                 </span>
               )}
-            </Link>
+            </NavLink>
           </div>
           {/* Mobile menu */}
           {isMenuOpen && (
@@ -119,9 +123,9 @@ const Header = () => {
               <div className="fixed inset-0 z-10 bg-rose-50"></div>
               <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
-                  <Link className={"link-styles"} to="/">
+                  <NavLink className={"link-styles"} to="/">
                     <img src={Logo} alt="Logo" className="w-15 h-8" />
-                  </Link>
+                  </NavLink>
                   <button
                     type="button"
                     onClick={toggleMenu}
@@ -147,16 +151,28 @@ const Header = () => {
                 <div className="flow-root bg-rose-50">
                   <div className="divide-y divide-gray-500/10">
                     <div className="flex flex-col col justify-center gap-4 mt-8">
-                      <Link
-                        className={"link-styles-mobile"}
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "link-styles-mobile bg-red-300" // Active link styling for mobile
+                            : "link-styles-mobile hover:bg-red-200"
+                        }
                         onClick={toggleMenu}
                         to="/"
                       >
                         Home
-                      </Link>
-                      <Link className={"link-styles-mobile"} to="/Contact">
+                      </NavLink>
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "link-styles-mobile bg-red-300" // Active link styling for mobile
+                            : "link-styles-mobile hover:bg-red-200"
+                        }
+                        onClick={toggleMenu}
+                        to="/contact"
+                      >
                         Contact
-                      </Link>
+                      </NavLink>
                     </div>
                   </div>
                 </div>

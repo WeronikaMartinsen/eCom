@@ -6,11 +6,13 @@ import Checkout from "./Pages/Checkout";
 import NoPage from "./Pages/NoPage";
 import CheckoutSuccess from "./Pages/CheckoutSuccess";
 import ContactSuccess from "./Pages/ContactSuccess";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<Product />} />

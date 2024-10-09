@@ -1,16 +1,23 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function BackToHomeLink() {
   return (
-    <Link to={`/`}>
-      <div className="flex gap-1 items-center pl-3">
-        <ArrowLeftIcon className="h-4 w-4 items-center text-gray-500" />
-        <span className="text-start text-sm hover:underline cursor-pointer">
-          Back to shopping
-        </span>
-      </div>
-    </Link>
+    <NavLink
+      to={`/`}
+      aria-label="Back to shopping"
+      className={({ isActive }) =>
+        `flex gap-1 items-center pl-3 ${
+          isActive ? "text-red-200 font-bold" : "text-gray-600"
+        } hover:text-red-400 transition-colors`
+      }
+    >
+      <ArrowLeftIcon className="h-4 w-4" />
+      <span className="text-sm hover:underline cursor-pointer">
+        Back to shopping
+      </span>
+    </NavLink>
   );
 }
+
 export default BackToHomeLink;

@@ -18,7 +18,10 @@ function CheckoutSuccessMessage() {
           </div>
         </div>
         <Link to={`/`}>
-          <button className="mt-8 p-2 pr-10 pl-10 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400">
+          <button
+            title="Continue shopping"
+            className="mt-8 p-2 pr-10 pl-10 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
+          >
             Continue Shopping
           </button>
         </Link>
