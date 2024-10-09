@@ -43,7 +43,7 @@ const Checkout = () => {
             >
               Clear Cart
             </button>
-            <Link to={`/CheckoutSuccess`}>
+            <Link to={`/checkout-success`}>
               <button
                 onClick={handleClearCart}
                 className="p-3 border text-md gap-2 flex justify-center bg-red-300 rounded-xl hover:bg-red-400"

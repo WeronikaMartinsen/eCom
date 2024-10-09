@@ -51,7 +51,7 @@ const CheckoutCarts = (props) => {
       <div className="grid grid-cols-5 custom-grid-col justify-stretch items-center border bg-white rounded-xl mt-2 w-full">
         <div>
           <Link
-            to={`/Product/${productId}`}
+            to={`/product/${productId}`}
             className="flex items-center gap-2"
           >
             <img

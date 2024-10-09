@@ -14,6 +14,10 @@ const schema = yup
     email: yup
       .string()
       .email("Please enter a valid email")
+      .matches(
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        "Invalid email address. Please use a standard format."
+      ) // Regex to allow standard email characters
       .required("Required"),
     subject: yup.string().min(3).required("Subject is required."),
     body: yup.string().min(3).required("Body is required."),
@@ -35,7 +39,7 @@ function ContactForm() {
   function onSubmit(data) {
     console.log(data);
     reset();
-    navigate("/ContactSuccess");
+    navigate("/contact-success");
   }
   return (
     <div className="w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
