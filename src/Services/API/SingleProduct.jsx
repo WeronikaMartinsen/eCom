@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import fetchSingleProduct from "./FetchData/fetchSingleProduct";
 import Loading from "../../Components/Loading";
 import ErrorMessage from "../../Components/ErrorMessage";
-import { useParams } from "react-router-dom";
 import SingleCard from "../../Components/SingleCard";
 
-export default function SingleProductCall() {
+export default function SingleProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -15,30 +16,23 @@ export default function SingleProductCall() {
       setError("Invalid product ID.");
       return;
     }
-    async function getProduct(url) {
+
+    const fetchData = async () => {
       try {
         setError(null);
         setLoading(true);
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(
-            "Failed to fetch the product. Please try again later."
-          );
-        }
-        const json = await response.json();
-        if (!json.data) {
-          throw new Error("Product not found.");
-        }
-        setProduct(json.data);
-        setLoading(false);
+
+        const result = await fetchSingleProduct(id);
+        setProduct(result);
       } catch (error) {
         console.error("Error fetching data:", error.message);
-        setLoading(false);
         setError(error.message);
+      } finally {
+        setLoading(false);
       }
-    }
+    };
 
-    getProduct(`https://v2.api.noroff.dev/online-shop/${id}`);
+    fetchData();
   }, [id]);
 
   if (loading) return <Loading />;

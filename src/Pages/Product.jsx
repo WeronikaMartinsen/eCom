@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import Layout from "../Layout/Layout";
-import SingleProductCall from "../Services/API/SingleProductCall";
+import SingleProduct from "../Services/API/SingleProduct";
 import BackToHomeLink from "../Components/BackToHomeLink";
 
 function Product() {
@@ -8,7 +8,7 @@ function Product() {
     <Layout>
       <main>
         <BackToHomeLink />
-        <SingleProductCall />
+        <SingleProduct />
       </main>
     </Layout>
   );
