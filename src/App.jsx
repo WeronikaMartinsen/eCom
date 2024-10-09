@@ -13,12 +13,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Product/:id" element={<Product />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Checkout" element={<Checkout />} />
-          <Route path="/CheckoutSuccess" element={<CheckoutSuccess />} />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout-success" element={<CheckoutSuccess />} />
           <Route path="*" element={<NoPage />} />
-          <Route path="/ContactSuccess" element={<ContactSuccess />} />
+          <Route path="/contact-success" element={<ContactSuccess />} />
         </Routes>
       </BrowserRouter>
     </div>
