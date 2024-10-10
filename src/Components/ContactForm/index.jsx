@@ -44,6 +44,9 @@ function ContactForm() {
   return (
     <div className="w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
       <h1 className="mt-12 mb-6 text-3xl text-center">Contact us!</h1>
+      <div className="mt-6 mb-6 w-100 lg:w-1/2">
+          <p>We’d love to hear from you! Whether you have a question about our products, need help with an order, or just want to give us feedback, we’re here to assist you.</p>
+        </div>
       <form
         className="flex flex-wrap justify-center items-center m-1 mb-6 w-50"
         onSubmit={handleSubmit(onSubmit)}
@@ -60,7 +63,7 @@ function ContactForm() {
             {...register("fullName")}
             className="appearance-none w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white hover:border-gray-500"
             type="text"
-            placeholder="Enter your name, e.g.: Maria Matinsen"
+            placeholder="Name"
           />
           <p className="text-red-500 text-xs italic">
             {errors.fullName?.message}
@@ -76,7 +79,7 @@ function ContactForm() {
             {...register("email")}
             className="appearance-none w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white hover:border-gray-500"
             type="text"
-            placeholder="Enter your email, e.g.: email@gmail.com"
+            placeholder="Email"
           />
           <p className="text-red-500 text-xs italic">{errors.email?.message}</p>
         </div>
@@ -90,7 +93,7 @@ function ContactForm() {
             {...register("subject")}
             className="appearance-none w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white hover:border-gray-500"
             type="text"
-            placeholder="Enter subject, e.g.: Shipment"
+            placeholder="Subject"
           />
           <p className="text-red-500 text-xs italic">
             {errors.subject?.message}
@@ -104,7 +107,7 @@ function ContactForm() {
             {...register("body")}
             className="appearance-none w-full bg-white text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white hover:border-gray-500"
             type="text"
-            placeholder="Enter description..."
+            placeholder="Body"
           />
           <p className="text-red-500 text-xs italic">{errors.body?.message}</p>
         </div>
