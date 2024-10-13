@@ -44,9 +44,13 @@ function ContactForm() {
   return (
     <div className="w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
       <h1 className="mt-12 mb-6 text-3xl text-center">Contact us!</h1>
-      <div className="mt-6 mb-6 w-100 lg:w-1/2">
-          <p>We’d love to hear from you! Whether you have a question about our products, need help with an order, or just want to give us feedback, we’re here to assist you.</p>
-        </div>
+      <div className="mt-6 mb-6 w-100 lg:w-1/2 text-center">
+        <p className="mb-2 font-semibold">We’d love to hear from you!</p>
+        <p>
+          Whether you have a question about our products, need help with an
+          order, or just want to give us feedback, we’re here to assist you.
+        </p>
+      </div>
       <form
         className="flex flex-wrap justify-center items-center m-1 mb-6 w-50"
         onSubmit={handleSubmit(onSubmit)}

@@ -43,13 +43,17 @@ function ProductCard({ product }) {
         <h5 className="mb-2 ml-2 text-xl font-bold">{product.title}</h5>
         {product.discountedPrice < product.price ? (
           <>
+            {/* Original price (strikethrough) */}
             <p className="mb-1 flex justify-end line-through dark:text-gray-500 text-xs text-gray-400">
               ${product.price},-
             </p>
+
+            {/* Discounted price */}
             <p className="mb-1 flex justify-end text-gray-700 dark:text-gray-400 text-xl font-semibold">
               ${product.discountedPrice},-
             </p>
 
+            {/* Discount percentage */}
             <div className="absolute top-1 right-1 text-white pl-3 pr-3 pt-1 pb-1 bg-red-500 rounded-full">
               <p className="font-bold text-md flex justify-end">
                 {Math.round(
@@ -60,6 +64,11 @@ function ProductCard({ product }) {
               </p>
               <span className="text-xs pl-1">OFF</span>
             </div>
+
+            {/* Calculated savings (rounded) */}
+            <p className="mt-2 text-xs font-bold text-red-500 flex justify-end">
+              SAVE {Math.round(product.price - product.discountedPrice)} $
+            </p>
           </>
         ) : (
           <p className="mb-1 font-normal flex justify-end text-xl">
@@ -67,9 +76,10 @@ function ProductCard({ product }) {
           </p>
         )}
       </div>
+
       <div className="flex justify-center items-center mb-4">
         <button
-          className="p-1 border text-md text-center flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
+          className="p-2 border text-md text-center flex justify-center bg-red-300 rounded-xl hover:bg-red-400"
           onClick={handleAddToCart}
         >
           Add to cart
